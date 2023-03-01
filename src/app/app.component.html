@@ -1,9 +1,29 @@
 <header>
+  <div id="head">
+    <div id="right_side search_wrap search">
+          <form id="search-form">
+            <input type="text" name="searchString" id="search_inp" placeholder="Пошук по сайту" /><button type="submit" id="search_sbm"></button>
+          </form>
+      <div id="all_prepods">
 
+        <a href="/teachers-list" class="button blue">Список викладачів</a>
+
+        <a href="/new-teacher" class="button green">Додати викладача (+)</a>
+
+        <a href="/login" class="button green">Авторизуватися</a>
+      </div>
+    </div>
+  </div>
 </header>
 <main>
   <router-outlet></router-outlet>
 </main>
 <footer>
-
+  <div id="copyright">
+    © 2014 - {{ currentYear | date: 'y' }} еНауковаДекларація
+    <br />
+    Автори: Співаковський О. В., Вінник М. О., Тарасіч Ю. Г., Кривобок Б. С., Полторацький М. Ю., Новіков М. М.
+    <br />
+    <a href="/about">Про проект</a>
+  </div>
 </footer>
