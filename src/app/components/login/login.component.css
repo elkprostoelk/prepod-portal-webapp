@@ -1,0 +1,73 @@
+.cont_wrap {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+#login_form_wrap {
+  margin: 10px auto 20px;
+}
+
+.login_form_block {
+  margin: 5px 0;
+}
+
+.login_form_block label{
+  display: inline-block;
+  margin: 6px 0;
+  font-size: 15pt;
+  color: #888;
+  font-family: 'Segoe UI', serif
+}
+
+.login_form_block input[type=text],.login_form_block input[type=password] {
+  width: 484px;
+  border: 1px solid silver;
+  border-radius: 9px;
+  font-size: 14pt;
+  color: #777;
+  padding:12px 8px;
+  background: transparent;
+  transition: box-shadow,border,background 300ms ease-out;
+  -webkit-transition: box-shadow,border,background 300ms ease-out;
+  -moz-transition: box-shadow,border,background 300ms ease-out;
+}
+
+.login_form_block input[type=text]:focus,.login_form_block input[type=password]:focus {
+  background: white;
+  border-color: #51A7E8;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset, 0 0 5px rgba(81, 167, 232, 0.5);
+}
+
+#welcome {
+  background: url(../../../assets/img/border.png) repeat-x left bottom;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  color: #777;
+}
+
+#welcome h1
+{
+  font-size: 15pt;
+}
+
+#welcome h2 {
+  font-size: 11pt;
+  margin-top: 6px;
+}
+
+#sign_in_helpers {
+  font-size:smaller;
+  position: relative;
+}
+
+#sign_in_helpers input[type=checkbox]{
+  padding: 0;
+  position: absolute;
+  margin: 9px 0 0;
+}
+
+#sign_in_helpers label {
+  vertical-align: baseline;
+  margin-left: 20px;
+  font-size: 11pt;
+  color: #666;
+}

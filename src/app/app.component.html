@@ -1,4 +1,4 @@
-<header>
+<header id="head_wrap">
   <div id="head">
     <div id="right_side search_wrap search">
           <form id="search-form">
@@ -6,19 +6,21 @@
           </form>
       <div id="all_prepods">
 
-        <a href="/teachers-list" class="button blue">Список викладачів</a>
+        <a class="button blue" routerLink="/teachers-list">Список викладачів</a>
 
-        <a href="/new-teacher" class="button green">Додати викладача (+)</a>
+        <a class="button green" routerLink="/new-teacher" *ngIf="isAuthenticated && isAdmin">Додати викладача (+)</a>
 
-        <a href="/login" class="button green">Авторизуватися</a>
+        <a class="button green" routerLink="/login" *ngIf="!isAuthenticated">Авторизуватися</a>
       </div>
     </div>
   </div>
 </header>
-<main>
-  <router-outlet></router-outlet>
+<main class="cont_wrap">
+  <div id="cont">
+    <router-outlet></router-outlet>
+  </div>
 </main>
-<footer>
+<footer id="footer">
   <div id="copyright">
     © 2014 - {{ currentYear | date: 'y' }} еНауковаДекларація
     <br />

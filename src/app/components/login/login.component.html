@@ -1,0 +1,26 @@
+<div id="welcome">
+  <h1>Ласкаво просимо на сайт еНауковаДекларація.</h1>
+  <br />
+  <h2>
+    Увійдіть до свого облікового запису.
+  </h2>
+</div>
+<div id="login_form_wrap">
+  <form [formGroup]="loginForm" (submit)="login(loginForm.value)">
+    <div class="login_form_block">
+      <label for="email">Ім'я користувача</label>
+      <br/>
+      <input type="text" id="email" tabindex="1" placeholder="викладач@ksu.ks.ua" formControlName="email" />
+    </div>
+
+    <div class="login_form_block">
+      <label for="password">Пароль</label>
+      <br/>
+      <input type="password" id="password" tabindex="2" formControlName="password" />
+    </div>
+
+    <div class="login_form_block" style="margin-top: 10px;">
+      <button class="button blue" type="submit" tabindex="3" style="font-size:14px" [disabled]="loginForm.invalid">Увійти</button>
+    </div>
+  </form>
+</div>
