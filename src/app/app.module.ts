@@ -7,8 +7,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components/login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {JwtModule} from "@auth0/angular-jwt";
+import {AuthInterceptor} from "./interceptors/auth/auth.interceptor";
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -27,12 +28,16 @@ export function tokenGetter() {
       RouterModule,
       HttpClientModule,
       JwtModule.forRoot({
-        config: {
-          tokenGetter: tokenGetter
-        }
+        config: { tokenGetter }
       }),
     ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

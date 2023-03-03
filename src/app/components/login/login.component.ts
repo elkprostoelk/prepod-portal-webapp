@@ -16,6 +16,9 @@ export class LoginComponent {
     private readonly builder: FormBuilder,
     private readonly userService: UserService,
     private readonly router: Router) {
+    if (userService.isAuthenticated) {
+      router.navigateByUrl('/');
+    }
     this.loginForm = builder.group({
       email: ['', [Validators.email, Validators.required, Validators.maxLength(256)]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]]
