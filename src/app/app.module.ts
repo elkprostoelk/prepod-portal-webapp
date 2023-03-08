@@ -12,6 +12,7 @@ import {JwtModule} from "@auth0/angular-jwt";
 import {AuthInterceptor} from "./interceptors/auth/auth.interceptor";
 import { UserProfileInfoComponent } from './components/user-profile-info/user-profile-info.component';
 import { TeachersListComponent } from './components/teachers-list/teachers-list.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -22,7 +23,8 @@ export function tokenGetter() {
     AppComponent,
     LoginComponent,
     UserProfileInfoComponent,
-    TeachersListComponent
+    TeachersListComponent,
+    NotFoundComponent
   ],
     imports: [
       BrowserModule,

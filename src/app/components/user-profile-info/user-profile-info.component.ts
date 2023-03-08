@@ -18,7 +18,8 @@ export class UserProfileInfoComponent {
           this.userId = paramMap.get('userId')!;
         }
         else if (this.isAuthenticated) {
-            this.userId = userService.parseJwt()!.id;
+            let id = userService.parseJwt()!.id;
+            router.navigate(['/profile', id]);
         }
         else {
           console.log('No user ID provided!');
