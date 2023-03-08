@@ -1,0 +1,91 @@
+#allTeachers_ttl {
+  background: url(../../../assets/img/border.png) repeat-x left bottom;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  color: #777;
+  position: relative;
+}
+
+#allTeachers_ttl h1 {
+  font-size: 15pt;
+}
+
+#allTeachers_ttl h2 {
+  font-size: 11pt;
+  margin-top: 6px;
+  max-width: 600px;
+}
+
+#ttl_side_links {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+
+#ttl_side_links a {
+  margin-left: 20px;
+}
+
+#ttl_side_links a:first-child {
+  margin-left: 0;
+}
+
+#allTeachers_wrap {
+  padding: 10px 0;
+  position: relative;
+}
+
+.teacher_block {
+  background: white;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 5px;
+  margin: 5px;
+  position: relative;
+}
+
+.teacher_block:first-child {
+  border-top: 0;
+}
+
+.teacher_name {
+  border-bottom: 1px solid #C0C0C0;
+  color: #0078CA;
+  font-size: 13pt;
+  padding: 4px 15px 4px 4px;
+}
+
+.teacher_avatar a img {
+  max-width: 150px;
+  height: 80px;
+  border: 1px solid #ccc;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+.teacher_avatar {
+  display: inline-block;
+}
+
+.teacher_mainInf {
+  display: inline-block;
+  padding-top: 2px;
+  margin-left: 10px;
+}
+
+.teacher_mainInf div {
+  color: #3E7091;
+  font-size: 11pt;
+  margin: 4px 0;
+}
+
+.teacher_mainInf span {
+  color: #666;
+}
+
+.no-info {
+  margin-top:35px;
+  color:#777
+}

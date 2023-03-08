@@ -16,7 +16,7 @@ export class AppComponent {
       router.navigateByUrl('/login');
     }
     else {
-      router.navigate(['/', userService.parseJwt()!.id]);
+      router.navigate(['/profile', userService.parseJwt()!.id]);
     }
   }
 
@@ -26,5 +26,9 @@ export class AppComponent {
 
   get isAdmin(): boolean {
     return this.userService.isAdmin;
+  }
+
+  get isProfilesCreator(): boolean {
+    return this.userService.isProfilesCreator;
   }
 }

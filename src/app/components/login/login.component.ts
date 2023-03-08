@@ -18,7 +18,7 @@ export class LoginComponent {
     private readonly router: Router) {
     if (userService.isAuthenticated) {
       let user = userService.parseJwt()!;
-      router.navigateByUrl(`/${user.id}`);
+      router.navigate(['/profile', user.id]);
     }
     this.loginForm = builder.group({
       email: ['', [Validators.email, Validators.required, Validators.maxLength(256)]],
@@ -32,7 +32,7 @@ export class LoginComponent {
         next: () => {
           let user = this.userService.parseJwt()!;
           console.log('Login succeeded!');
-          this.router.navigateByUrl(`/${user.id}`);
+          this.router.navigate(['/profile', user.id]);
         },
         error: (err: HttpErrorResponse) => {
           console.log(err);

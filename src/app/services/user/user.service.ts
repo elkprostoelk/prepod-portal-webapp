@@ -6,6 +6,8 @@ import {UserTokenDto} from "../../dtos/UserTokenDto";
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {UserDto} from "../../dtos/UserDto";
 import {tokenGetter} from "../../app.module";
+import {ShortUserInfoDto} from "../../dtos/ShortUserInfoDto";
+import {ServiceResult} from "../../dtos/ServiceResult";
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,10 @@ export class UserService {
       this.loggedUserSubject.next(this.parseJwt()!);
       return response;
     }));
+  }
+
+  getAllTeachersList(): Observable<ServiceResult<ShortUserInfoDto[]>> {
+    return this.http.get<ServiceResult<ShortUserInfoDto[]>>(`${environment.apiPath}user/teachers-list`);
   }
 
   logoutUser() {

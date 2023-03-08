@@ -6,11 +6,11 @@
           </form>
       <div id="all_prepods">
 
-        <a class="button blue" routerLink="/teachers-list">Список викладачів</a>
+        <a class="button blue" [routerLink]="['/teachers-list']">Список викладачів</a>
 
-        <a class="button green" routerLink="/new-teacher" *ngIf="isAuthenticated && isAdmin">Додати викладача (+)</a>
+        <a class="button green" [routerLink]="['/new-teacher']" *ngIf="isAuthenticated && (isAdmin || isProfilesCreator)">Додати викладача (+)</a>
 
-        <a class="button green" routerLink="/login" *ngIf="!isAuthenticated">Авторизуватися</a>
+        <a class="button green" [routerLink]="['/login']" *ngIf="!isAuthenticated">Авторизуватися</a>
       </div>
     </div>
   </div>

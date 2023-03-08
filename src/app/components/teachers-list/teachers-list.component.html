@@ -1,0 +1,40 @@
+<div id="allTeachers_ttl">
+  <h1>Список викладачів</h1>
+  <div id="ttl_side_links">
+    <a [routerLink]="['/profile', userId]" *ngIf="isAuthenticated">Моя сторінка</a>
+  </div>
+</div>
+<div id="allTeachers_wrap">
+  <div class="teacher_block" *ngFor="let teacher of (teachers$ | async)">
+    <div class="teacher_name">
+      <a [routerLink]="['/profile', teacher.id]">{{teacher.name}}</a>
+    </div>
+    <div class="teacher_avatar">
+      <a class="flipLightBox" href="https://localhost:7047/no-avatar.png">
+        <img src="https://localhost:7047/no-avatar.png" alt="Avatar image" />
+      </a>
+    </div>
+    <div class="teacher_mainInf">
+      <div class="no-info" *ngIf="!teacher.scienceDegree && !teacher.academicTitle && !teacher.workPlaceLocation && !teacher.town; else anyInfoSpecified">
+        Інформація відсутня
+      </div>
+      <ng-template #anyInfoSpecified>
+        <div>
+          <span>Поточне місто: {{teacher.town ?? 'Інформація відсутня'}}</span>
+        </div>
+        <div>
+          <span>Поточне місце роботи: {{teacher.workPlaceLocation ?? 'Інформація відсутня'}}</span>
+        </div>
+        <div>
+          <span>Кафедра: {{teacher.department}}</span>
+        </div>
+        <div>
+          <span>Учене звання: {{teacher.academicTitle ?? 'Інформація відсутня'}}</span>
+        </div>
+        <div>
+          <span>Науковий ступінь: {{teacher.scienceDegree ?? 'Інформація відсутня'}}</span>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
