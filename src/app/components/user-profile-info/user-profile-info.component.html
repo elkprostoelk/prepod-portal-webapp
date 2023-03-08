@@ -1,0 +1,29 @@
+<div id="prepod_profile">
+  <div id="prepod_name">
+    <h1>Користувач</h1>
+    <!--@if (C.GetMyId(User) != Model.UserId && User.Identity.IsAuthenticated)-->
+
+    <div id="ttl_side_links" *ngIf="true"><a [routerLink]="['/',userId]">Моя сторінка</a></div>
+
+  </div>
+</div>
+<div id="left_col">
+  <div id="avatarImgWrap">
+    <a href="https://localhost:7047/no-avatar.png" class="flipLightBox 1" style="cursor: zoom-in">
+      <img src="https://localhost:7047/no-avatar.png" id="avatarImg" alt="user avatar" />
+    </a>
+
+  </div>
+  <div id="prof_sections">
+    <a class="active" href="#">Основна інформація</a>
+    <a class="" href="#">Наукова діяльність</a>
+    <a class="" href="#">Наукові звіти</a>
+    <a class="" href="#">Проєкти</a>
+  </div>
+  <div id="manage_links" *ngIf="userId || isAdmin">
+    <a [routerLink]="['/',userId]" *ngIf="userId">Моя сторінка</a>
+    <a [routerLink]="['/manage',userId]" *ngIf="userId">Налаштування</a>
+    <a [routerLink]="['/edit-profile',userId]">Редагувати</a>
+    <a href="javascript:void(0)" *ngIf="isAuthenticated && userId" (click)="logout()">Вийти</a>
+  </div>
+</div>

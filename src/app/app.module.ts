@@ -10,6 +10,7 @@ import {RouterModule} from "@angular/router";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {JwtModule} from "@auth0/angular-jwt";
 import {AuthInterceptor} from "./interceptors/auth/auth.interceptor";
+import { UserProfileInfoComponent } from './components/user-profile-info/user-profile-info.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -18,7 +19,8 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    UserProfileInfoComponent
   ],
     imports: [
       BrowserModule,

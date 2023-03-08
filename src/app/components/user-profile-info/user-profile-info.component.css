@@ -1,0 +1,443 @@
+#avatarImgWrap {
+  display: inline-block;
+  max-width: 160px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  padding: 0 !important;
+  margin: 0 auto;
+  position: relative;
+}
+
+#uploadAvatar {
+  cursor: pointer;
+  transition: all 200ms ease-out;
+  -webkit-transition: all 200ms ease-out;
+  opacity: 0;
+  height: 0;
+  background: url(../../../assets/img/uploadImg.png) no-repeat scroll center center rgba(0,0,0,0.45);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border: 0;
+  outline: 0;
+}
+
+#deleteAvatar {
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background: 0 0 rgba(0,0,0,0.5);
+  position: absolute;
+  text-align: center;
+  color: #ccc;
+  font-size: 12pt;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 1px;
+  transition: all 150ms ease-out;
+  display: none;
+  line-height: 140%;
+  z-index: 1000;
+}
+
+#deleteAvatar:hover {
+  background: 0 0 rgba(0,0,0,0.58);
+  color: white;
+}
+
+#uploadAvatar:hover {
+  background: url(../../../assets/img/uploadImgHover.png) no-repeat scroll center center rgba(0,0,0,0.55);
+}
+
+#uploadAvatarForm {
+  visibility: hidden !important;
+  position: absolute !important;
+  height: 0;
+  width: 0;
+}
+
+#deleteAvatarForm {
+  visibility: hidden !important;
+  position: absolute !important;
+  height: 0;
+  width: 0;
+}
+
+
+#avatarImg {
+  max-width: 150px;
+  min-width: 100px;
+  max-height: 400px;
+  padding: 5px 5px 0;
+}
+
+#prepod_profile {
+  margin: 10px 0;
+  width: 100%;
+}
+
+#prepod_name {
+  position: relative;
+  background: url(../../../assets/img/border.png) repeat-x left bottom;
+  padding-bottom: 10px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+#prepod_name h1 {
+  font-size: 15pt;
+}
+
+#prepod_name h2 {
+  margin-top: 6px;
+  font-size: 11pt;
+}
+
+#left_col {
+  display: inline-block;
+  width: 180px;
+}
+
+#right_col_wrap {
+  display: inline-block;
+  position: relative;
+  min-height: 50px;
+  margin-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-left: 24px;
+  border-left: 1px solid #dcdcdc;
+  width: 560px;
+  margin-bottom: 6px;
+}
+
+#manage_links {
+  background: white;
+  margin-top: 8px;
+  border-radius: 3px;
+  box-shadow: 0 0 5px 1px #dcdcdc;
+}
+
+#manage_links a {
+  display: block;
+  padding: 4px 6px;
+  border-bottom: 1px solid #E9EAED;
+}
+
+#manage_links a:last-child {
+  border-bottom: 0;
+}
+
+#cont_wrap {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.miniblock {
+  display: block;
+  padding-top: 3px;
+  font-weight: normal;
+  margin: 4px 0 0;
+}
+
+.miniblock .label {
+  width: 150px;
+  font-size: 13px;
+}
+
+.miniblock .labeled {
+  font-size: 13px;
+  font-weight: bold;
+  font-family: tahoma,arial,verdana,sans-serif,Lucida Sans;
+  color: #45688E;
+  padding-top: 1px;
+  overflow: hidden;
+  width: 410px;
+}
+
+#right_col .edit {
+  font-size: 11px;
+  background: white;
+  padding: 0 6px;
+  border-radius: 6px;
+  box-shadow: 0 0 4px 0 #fff;
+  margin-top: 4px;
+}
+
+#right_col .edit a {
+  color: #666;
+}
+
+#career_inf, #edc_inf, #dissertDefense_inf, #academicDegreeGain_inf, #subj_inf, #scientometricDbProfiles_inf {
+  margin-top: 15px;
+}
+
+#career_inf_title, #main_inf_title, #edc_inf_title, #academicDegreeGain_inf_title, #dissertDefense_inf_title, #subj_title, #scientometricDbProfiles_inf_title {
+  font-size: 16px;
+  color: #555;
+  height: 12px;
+  border-bottom: 1px solid #DAE1E8;
+  margin-bottom: 20px;
+}
+
+.no_inf {
+  color: #777;
+  text-align: center;
+}
+
+.block_ttl {
+  background: white;
+  box-shadow: 0 0 4px 0 #fff;
+  padding-right: 6px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+#ttl_side_links {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+
+.subj_ttl {
+  margin-bottom: 4px;
+}
+
+.subj_ttl:last-child {
+  margin-bottom: 0;
+}
+
+.ajax_loader {
+  background: url(../../../assets/img/ajax-loader.gif) no-repeat scroll center center;
+  background-size: contain;
+  width: 54px;
+  height: 55px;
+  left: 40%;
+  position: absolute;
+  top: 0;
+  z-index: 9999;
+}
+
+.tabs {
+  background: transparent;
+  color: #555;
+  border: none;
+}
+
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+  color: #3E7091;
+}
+
+.ui-tabs .ui-tabs-nav li:last-child {
+  margin-right: 0;
+}
+
+.ui-tabs .ui-tabs-nav {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.ui-widget-header {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #AAA;
+  border-radius: 0;
+}
+
+.ui-widget {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.ui-tabs .ui-tabs-panel {
+  padding: 25px 0 0;
+  width: 550px;
+  margin: 0 auto;
+  text-align: left !important;
+}
+
+.ui-widget-content a {
+  color: #3E7091 !important;
+}
+
+.scienceTab_header {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+#patents_header {
+  margin-top: 15px;
+}
+
+#convs_header a {
+  margin-left: 10px;
+}
+
+#convs_header a:first-child {
+  margin-left: 0;
+}
+
+#articles_header a {
+  margin-left: 10px;
+}
+
+#articles_header a:first-child {
+  margin-left: 0;
+}
+
+#prof_sections {
+  margin: 8px 0;
+}
+
+#prof_sections a {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  display: block;
+  padding: 5px;
+  color: #666;
+  position: relative;
+}
+
+#prof_sections a:hover, #prof_sections a.active {
+  text-decoration: none;
+  background: white;
+}
+
+#prof_sections a:hover {
+  transition: 300ms ease-out;
+}
+
+#prof_sections a.active::after {
+  border: 15px solid transparent;
+  border-right: 12px solid silver;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#showMain {
+  border-bottom: 0 !important;
+}
+
+.scienceTab_body_wrap {
+  position: relative;
+}
+
+.scienceBlock {
+  background: white;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 5px;
+  margin: 5px;
+  position: relative;
+  min-height: 65px;
+}
+
+.scienceBlock {
+  border-top: 0;
+  /*background: url("/Images/science-bg.jpg") no-repeat left top;*/
+  border-radius: 3px;
+  box-shadow: rgb(85, 181, 194) 0 0 6px;
+}
+
+.scienceBlock_mainInf {
+  display: inline-block;
+}
+
+.conv_isHelded {
+  margin-left: 20px;
+  width: 150px;
+  display: inline-block;
+  height: 80px;
+  text-align: center;
+}
+
+.conv_isHelded.Yes {
+  background: url(../../../assets/img/Galochka.png) no-repeat scroll center bottom;
+}
+
+.conv_isHelded.No {
+  background: url(../../../assets/img/Galochka_no.png) no-repeat scroll center bottom;
+}
+
+.conv_isHelded u {
+  color: #666;
+  font-size: 12pt;
+}
+
+.scienceBlock_mainInf div {
+  color: #3E7091;
+  font-size: 11pt;
+  margin: 4px 0;
+}
+
+.scienceBlock_mainInf div:first-child {
+  margin-top: 8px;
+}
+
+.scienceBlock_mainInf span {
+  color: #666;
+}
+
+.scienceBlock_title {
+  border-bottom: 1px solid silver;
+  color: #0078CA;
+  font-size: 13pt;
+  padding: 4px 15px 4px 4px;
+}
+
+.remove_scienceBlock {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: url(../../../assets/img/delIcon.png) no-repeat scroll center center white;
+  right: -18px;
+  top: 5px;
+  text-decoration: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.edit_scienceBlock {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: url(../../../assets/img/editIcon.png) no-repeat scroll center center white;
+  right: -18px;
+  top: 42px;
+  text-decoration: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+/* Convs n Articles */
+
+#filterListConvs, #filterListArts, #filterListPatents, #filterListPublications {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  border: 1px solid #ccc;
+  text-align: left;
+  padding: 8px;
+  z-index: 100;
+  background: #f4f4f4;
+  display: none;
+  white-space: nowrap !Important;
+}
+
+#filterListArts div a, #filterListConvs div a, #filterListPatents div a, #filterListPublications div a {
+  margin: 0;
+}
+
+#reportFilters_accordion h3 {
+  display: block;
+  margin: 2px 0 0 0;
+  padding: .5em .5em .5em 26px;
+}

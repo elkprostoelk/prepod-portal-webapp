@@ -15,6 +15,9 @@ export class AppComponent {
     if (!this.isAuthenticated) {
       router.navigateByUrl('/login');
     }
+    else {
+      router.navigate(['/', userService.parseJwt()!.id]);
+    }
   }
 
   get isAuthenticated(): boolean {

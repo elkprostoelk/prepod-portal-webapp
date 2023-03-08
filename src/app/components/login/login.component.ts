@@ -17,7 +17,8 @@ export class LoginComponent {
     private readonly userService: UserService,
     private readonly router: Router) {
     if (userService.isAuthenticated) {
-      router.navigateByUrl('/');
+      let user = userService.parseJwt()!;
+      router.navigateByUrl(`/${user.id}`);
     }
     this.loginForm = builder.group({
       email: ['', [Validators.email, Validators.required, Validators.maxLength(256)]],
@@ -29,8 +30,9 @@ export class LoginComponent {
     this.userService.login(value.email, value.password)
       .subscribe({
         next: () => {
+          let user = this.userService.parseJwt()!;
           console.log('Login succeeded!');
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl(`/${user.id}`);
         },
         error: (err: HttpErrorResponse) => {
           console.log(err);

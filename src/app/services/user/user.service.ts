@@ -46,7 +46,12 @@ export class UserService {
 
   get isAdmin(): boolean {
     let user = this.parseJwt();
-    return user !== undefined && (user.role === 'administrator' || user.role === 'profiles creator');
+    return user !== undefined && user.role === 'administrator';
+  }
+
+  get isProfilesCreator(): boolean {
+    let user = this.parseJwt();
+    return user !== undefined && user.role === 'profiles creator';
   }
 
   parseJwt(): UserDto | undefined {
