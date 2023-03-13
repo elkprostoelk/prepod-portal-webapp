@@ -27,6 +27,6 @@ export class TeachersListComponent {
   }
 
   get userId(): string | undefined {
-    return this.userService.parseJwt()?.id ?? undefined;
+    return this.userService.loggedUserSubject.getValue()?.id ?? undefined;
   }
 }

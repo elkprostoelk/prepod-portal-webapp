@@ -15,7 +15,7 @@
       </a>
     </div>
     <div class="teacher_mainInf">
-      <div class="no-info" *ngIf="!teacher.scienceDegree && !teacher.academicTitle && !teacher.workPlaceLocation && !teacher.town; else anyInfoSpecified">
+      <div class="no-info" *ngIf="teacher.scienceDegree !== undefined && teacher.academicTitle !== undefined && teacher.workPlaceLocation !== undefined && teacher.town !== undefined; else anyInfoSpecified">
         Інформація відсутня
       </div>
       <ng-template #anyInfoSpecified>

@@ -3,7 +3,7 @@
     <h1>Користувач</h1>
     <!--@if (C.GetMyId(User) != Model.UserId && User.Identity.IsAuthenticated)-->
 
-    <div id="ttl_side_links" *ngIf="true"><a [routerLink]="['/profile',userId]">Моя сторінка</a></div>
+    <div id="ttl_side_links" *ngIf="true"><a [routerLink]="['/profile', loggedUserId]">Моя сторінка</a></div>
 
   </div>
 </div>

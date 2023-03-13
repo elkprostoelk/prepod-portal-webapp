@@ -41,6 +41,10 @@ export class UserProfileInfoComponent {
     return this.userService.isProfilesCreator;
   }
 
+  get loggedUserId(): string | undefined {
+    return this.userService.loggedUserSubject.getValue()?.id ?? undefined;
+  }
+
   logout(): void {
     this.userService.logoutUser();
     this.router.navigateByUrl('/login');
