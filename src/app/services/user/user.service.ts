@@ -8,6 +8,7 @@ import {UserDto} from "../../dtos/UserDto";
 import {tokenGetter} from "../../app.module";
 import {ShortUserInfoDto} from "../../dtos/ShortUserInfoDto";
 import {ServiceTypedResult} from "../../dtos/ServiceResult";
+import {CreatedUserDto} from "../../dtos/CreatedUserDto";
 
 @Injectable({
   providedIn: 'root'
@@ -77,5 +78,9 @@ export class UserService {
       };
     }
     return undefined;
+  }
+
+  registerTeacher(value: any): Observable<CreatedUserDto> {
+    return this.http.post<CreatedUserDto>(`${environment.apiPath}user/new-teacher`, value);
   }
 }

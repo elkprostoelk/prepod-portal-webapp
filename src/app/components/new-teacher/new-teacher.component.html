@@ -1,0 +1,45 @@
+<div id="addTeacher">
+  <h1>Реєстрація нового викладача</h1>
+  <br />
+  <h2>Надайте скорочені відомості про викладача</h2>
+  <div id="ttl_side_links"><a href="/">Моя сторінка</a></div>
+</div>
+<div id="addTch_form_wrap">
+  <form [formGroup]="newTeacherForm" (submit)="registerTeacher()">
+    <div class="addTch_form_block">
+      <label for="name">ПІБ викладача</label>
+      <br />
+      <input id="name" type="text" formControlName="name" placeholder="приклад: Петренко Петр Петрович"/>
+    </div>
+
+    <div class="addTch_form_block">
+      <label for="email">Адреса ел. пошти викладача</label>
+      <br />
+      <input id="email" type="email" formControlName="email" placeholder="викладач@ksu.ks.ua"/>
+    </div>
+
+    <div class="addTch_form_block">
+      <label for="department">Кафедра</label>
+      <br />
+      <select id="department" formControlName="departmentId">
+        <option [value]="department.id" *ngFor="let department of (departments$ | async)">{{department.title}}</option>
+      </select>
+    </div>
+
+    <div class="addTch_form_block" formArrayName="scientometricDbProfiles">
+      <label>Посилання на наукометричні профілі викладача</label>
+      <br />
+      <button class="button btn btn-sm btn-success" type="button" (click)="addProfile()">Додати профіль</button>
+      <br />
+      <div class="addTch_form_block" *ngFor="let control of scientometricDbProfiles.controls; let i = index" [formGroupName]="i">
+        <input type="text" formControlName="name" style="margin-right:20px;width:100px" />
+        <input type="text" formControlName="profileLink" style="margin-right:20px" />
+        <button class="button btn btn-sm btn-danger" type="button" (click)="removeProfile(i)">Видалити</button>
+      </div>
+    </div>
+
+    <div class="addTch_form_block">
+      <button class="button green" style="font-size:14px" type="submit" [disabled]="newTeacherForm.invalid || newTeacherForm.untouched || scientometricDbProfiles.length === 0">Зареєструвати</button>
+    </div>
+  </form>
+</div>

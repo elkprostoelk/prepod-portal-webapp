@@ -1,0 +1,63 @@
+#cont_wrap {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+#addTch_form_wrap {
+  margin: 10px auto 20px;
+}
+
+.addTch_form_block {
+  margin: 5px 0;
+}
+
+.addTch_form_block label{
+  display: inline-block;
+  margin: 6px 0;
+  font-size: 15pt;
+  color: #888;
+  font-family: 'Segoe UI', serif
+}
+
+.addTch_form_block input[type=email], .addTch_form_block input[type=text],.addTch_form_block input[type=password], .addTch_form_block select {
+  width: 484px;
+  border: 1px solid silver;
+  border-radius: 9px;
+  font-size: 14pt;
+  color: #777;
+  padding:12px 8px;
+  background: transparent;
+  transition: box-shadow,border,background 300ms ease-out;
+  -webkit-transition: box-shadow,border,background 300ms ease-out;
+  -moz-transition: box-shadow,border,background 300ms ease-out;
+}
+
+.addTch_form_block input[type=email]:focus,.addTch_form_block input[type=text]:focus,.addTch_form_block input[type=password]:focus {
+  background: white;
+  border-color: #51A7E8;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.075) inset, 0 0 5px rgba(81, 167, 232, 0.5);
+}
+
+#addTeacher {
+  background: url(../../../assets/img/border.png) repeat-x left bottom;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  color: #777;
+  position: relative;
+}
+
+#addTeacher h1 {
+  font-size: 15pt;
+}
+
+#addTeacher h2 {
+  font-size: 11pt;
+  margin-top: 6px;
+}
+
+#ttl_side_links {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
