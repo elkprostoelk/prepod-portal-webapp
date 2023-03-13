@@ -1,0 +1,29 @@
+#cont_wrap {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+#aboutProj {
+  background: url(../../../assets/img/border.png) repeat-x left bottom;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  color: #777;
+  position: relative;
+}
+
+#aboutProj h1 {
+  font-size: 15pt;
+}
+
+#ttl_side_links {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+
+#textContainer{
+  margin: 10px auto;
+  font-size:12pt;
+  font-family: 'Segoe UI', serif;
+}
