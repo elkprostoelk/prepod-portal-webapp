@@ -19,10 +19,10 @@
       <a class="" href="#">Наукові звіти</a>
       <a class="" href="#">Проєкти</a>
     </div>
-    <div id="manage_links" *ngIf="userId || isAdmin">
-      <a [routerLink]="['/profile',userId]" *ngIf="userId">Моя сторінка</a>
+    <div id="manage_links" *ngIf="userId !== undefined || isAdmin">
+      <a [routerLink]="['/profile', loggedUserId]" *ngIf="userId">Моя сторінка</a>
       <a [routerLink]="['/manage',userId]" *ngIf="userId">Налаштування</a>
-      <a [routerLink]="['/edit-profile',userId]">Редагувати</a>
+      <a [routerLink]="['/edit-profile', loggedUserId]">Редагувати</a>
       <a href="javascript:void(0)" *ngIf="isAuthenticated && userId" (click)="logout()">Вийти</a>
     </div>
   </div>
