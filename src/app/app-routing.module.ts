@@ -7,13 +7,20 @@ import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {NewTeacherComponent} from "./components/new-teacher/new-teacher.component";
 import {AuthGuardService} from "./services/auth-guard/auth-guard.service";
 import {AboutComponent} from "./components/about/about.component";
+import {UserProfileMainInfoComponent} from "./components/user-profile-main-info/user-profile-main-info.component";
 
 const canActivate = () => inject(AuthGuardService).canActivate();
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: UserProfileInfoComponent },
-  { path: 'profile/:userId', component: UserProfileInfoComponent },
+  {
+    path: 'profile/:userId',
+    component: UserProfileInfoComponent,
+    children: [
+      { path: 'main-info', component: UserProfileMainInfoComponent }
+    ]
+  },
   { path: 'teachers-list', component: TeachersListComponent },
   { path: 'new-teacher', component: NewTeacherComponent, canActivate: [canActivate] },
   { path: 'about', component: AboutComponent },

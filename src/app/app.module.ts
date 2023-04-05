@@ -15,6 +15,7 @@ import { TeachersListComponent } from './components/teachers-list/teachers-list.
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NewTeacherComponent } from './components/new-teacher/new-teacher.component';
 import { AboutComponent } from './components/about/about.component';
+import { UserProfileMainInfoComponent } from './components/user-profile-main-info/user-profile-main-info.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -28,7 +29,8 @@ export function tokenGetter() {
     TeachersListComponent,
     NotFoundComponent,
     NewTeacherComponent,
-    AboutComponent
+    AboutComponent,
+    UserProfileMainInfoComponent
   ],
     imports: [
       BrowserModule,

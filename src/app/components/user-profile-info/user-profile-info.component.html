@@ -1,23 +1,23 @@
 <div id="prepod_profile">
   <div id="prepod_name">
-    <h1>Користувач</h1>
+    <h1>{{ nameAndAvatar?.name }}</h1>
     <!--@if (C.GetMyId(User) != Model.UserId && User.Identity.IsAuthenticated)-->
 
-    <div id="ttl_side_links" *ngIf="true"><a [routerLink]="['/profile', loggedUserId]">Моя сторінка</a></div>
+    <div id="ttl_side_links" *ngIf="isAuthenticated && !isMyPage"><a [routerLink]="['/profile', loggedUserId]">Моя сторінка</a></div>
 
   </div>
   <div id="left_col">
     <div id="avatarImgWrap">
-      <a href="https://localhost:7047/no-avatar.png" class="flipLightBox 1" style="cursor: zoom-in">
-        <img src="https://localhost:7047/no-avatar.png" id="avatarImg" alt="user avatar" />
+      <a href="{{serverPath}}{{nameAndAvatar?.avatarImagePath}}" class="flipLightBox 1" style="cursor: zoom-in" *ngIf="nameAndAvatar?.avatarImagePath">
+        <img src="{{serverPath}}{{nameAndAvatar?.avatarImagePath}}" id="avatarImg" alt="user avatar" />
       </a>
 
     </div>
     <div id="prof_sections">
-      <a class="active" href="#">Основна інформація</a>
-      <a class="" href="#">Наукова діяльність</a>
-      <a class="" href="#">Наукові звіти</a>
-      <a class="" href="#">Проєкти</a>
+      <a [class]="activeStateClasses[0]" [routerLink]="['main-info']" (click)="changeActiveState(0)">Основна інформація</a>
+      <a [class]="activeStateClasses[1]" href="#" (click)="changeActiveState(1)">Наукова діяльність</a>
+      <a [class]="activeStateClasses[2]" href="#" (click)="changeActiveState(2)">Наукові звіти</a>
+      <a [class]="activeStateClasses[3]" href="#" (click)="changeActiveState(3)">Проєкти</a>
     </div>
     <div id="manage_links" *ngIf="userId !== undefined || isAdmin">
       <a [routerLink]="['/profile', loggedUserId]" *ngIf="userId">Моя сторінка</a>
@@ -27,9 +27,8 @@
     </div>
   </div>
   <div id="right_col_wrap">
-    <div id="ajax_loader_main" class="ajax_loader"></div>
     <div id="right_col">
-
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

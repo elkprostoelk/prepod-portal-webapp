@@ -1,0 +1,199 @@
+<div id="ajax_loader_main" class="ajax_loader" *ngIf="isNullOrUndefined(userMainInfo$); else content"></div>
+<ng-template #content>
+  <div id="main_inf">
+    <div id="main_inf_title">
+      <h3 class="block_ttl">Основне</h3>
+      <div class="edit fl_r" *ngIf="isMyPage || isAdmin">
+        <a [routerLink]="['/edit-profile', userId]">Редагувати</a>
+      </div>
+    </div>
+    <div class="no_inf" *ngIf="noMainInfoProvided; else mainInfo">Інформація відсутня</div>
+    <ng-template #mainInfo>
+      <h4 class="clear_fix miniblock" *ngIf="!isMyPage && (userMainInfo$ | async)?.homeTown !== null || isAdmin || isMyPage">
+         <span class="label">Місце народження:</span>
+         <span class="labeled">
+            {{ (userMainInfo$ | async)?.homeTown ?? 'Інформація відсутня' }}
+         </span>
+      </h4>
+      <h4 class="clear_fix miniblock" *ngIf="!isMyPage && (userMainInfo$ | async)?.town !== null || isAdmin || isMyPage">
+        <span class="label">Поточне місце проживання:</span>
+        <span class="labeled">
+          {{ (userMainInfo$ | async)?.town ?? 'Інформація відсутня' }}
+        </span>
+      </h4>
+      <h4 class="clear_fix miniblock" *ngIf="!isMyPage && (userMainInfo$ | async)?.birthDate !== null || isAdmin || isMyPage">
+        <span class="label">Дата народження:</span>
+        <span class="labeled">
+          {{ (userMainInfo$ | async)?.birthDate ?? 'Інформація відсутня' }}
+        </span>
+      </h4>
+      <h4 class="clear_fix miniblock">
+        <span class="label">Стать:</span>
+        <span class="labeled">
+          {{ (userMainInfo$ | async)?.gender ?? 'Інформація відсутня' }}
+        </span>
+      </h4>
+      <h4 class="clear_fix miniblock">
+        <span class="label">Кафедра:</span>
+        <span class="labeled">
+          {{ (userMainInfo$ | async)?.department ?? 'Інформація відсутня' }}
+        </span>
+      </h4>
+      <h4 class="clear_fix miniblock" *ngIf="!isMyPage && (userMainInfo$ | async)?.academicTitle !== null || isAdmin || isMyPage">
+        <span class="label">Учене звання:</span>
+        <span class="labeled">
+          {{ (userMainInfo$ | async)?.academicTitle ?? 'Інформація відсутня' }}
+        </span>
+      </h4>
+      <h4 class="clear_fix miniblock" *ngIf="!isMyPage && (userMainInfo$ | async)?.scienceDegree !== null || isAdmin || isMyPage">
+        <span class="label">Науковий ступінь:</span>
+        <span class="labeled">
+          {{ (userMainInfo$ | async)?.scienceDegree ?? 'Інформація відсутня' }}
+        </span>
+      </h4>
+    </ng-template>
+  </div>
+  <div id="career_inf">
+    <div id="career_inf_title">
+      <h3 class="block_ttl">Кар'єра</h3>
+      <div class="edit fl_r" *ngIf="isMyPage || isAdmin">
+        <a [routerLink]="['/edit-profile', userId]">Редагувати</a>
+      </div>
+    </div>
+    <div class="no_inf" *ngIf="noCareerInfoProvided; else careerInfo">Інформація відсутня</div>
+    <ng-template #careerInfo>
+      <h4 class="clear_fix miniblock" *ngIf="!isMyPage && (userMainInfo$ | async)?.workplaceLocation !== null || isAdmin || isMyPage">
+        <span class="label">Основне місце праці:</span>
+        <span class="labeled">
+            {{ (userMainInfo$ | async)?.workplaceLocation ?? 'Інформація відсутня' }}
+         </span>
+      </h4>
+      <h4 class="clear_fix miniblock" *ngIf="!isMyPage && (userMainInfo$ | async)?.workplacePosition !== null || isAdmin || isMyPage">
+        <span class="label">Посада:</span>
+        <span class="labeled">
+            {{ (userMainInfo$ | async)?.workplacePosition ?? 'Інформація відсутня' }}
+         </span>
+      </h4>
+    </ng-template>
+  </div>
+  <div id="edc_inf">
+    <div id="edc_inf_title">
+      <h3 class="block_ttl">Освіта</h3>
+      <div class="edit fl_r" *ngIf="isMyPage || isAdmin">
+        <a [routerLink]="['/edit-profile', userId]">Редагувати</a>
+      </div>
+    </div>
+    <div class="no_inf" *ngIf="noEducationInfoProvided; else educationInfo">Інформація відсутня</div>
+    <ng-template #educationInfo>
+      <div *ngFor="let education of (userMainInfo$ | async)?.educations; let i = index">
+        <h4 class="clear_fix miniblock" *ngIf="!isMyPage && education?.institution !== null || isMyPage || isAdmin">
+          <span class="label">Навчальний заклад: </span>
+          <span class="labeled">
+            {{ education?.institution ?? 'Інформація відсутня' }}
+          </span>
+        </h4>
+        <h4 class="clear_fix miniblock" *ngIf="!isMyPage && education?.startYear !== null || isMyPage || isAdmin">
+          <span class="label">Рік початку навчання: </span>
+          <span class="labeled">
+            {{ education?.startYear ?? 'Інформація відсутня' }}
+          </span>
+        </h4>
+        <h4 class="clear_fix miniblock" *ngIf="!isMyPage && education?.endYear !== null || isMyPage || isAdmin">
+          <span class="label">Рік завершення навчання: </span>
+          <span class="labeled">
+            {{ education?.endYear ?? 'Інформація відсутня' }}
+          </span>
+        </h4>
+        <h4 class="clear_fix miniblock" *ngIf="!isMyPage && education?.specialty !== null || isMyPage || isAdmin">
+          <span class="label">Спеціальність: </span>
+          <span class="labeled">
+            {{ education?.specialty ?? 'Інформація відсутня' }}
+          </span>
+        </h4>
+        <h4 class="clear_fix miniblock" *ngIf="!isMyPage && education?.qualificationByDiploma !== null || isMyPage || isAdmin">
+          <span class="label">Кваліфікація за дипломом: </span>
+          <span class="labeled">
+            {{ education?.qualificationByDiploma ?? 'Інформація відсутня' }}
+          </span>
+        </h4>
+        <div class="separator" *ngIf="isSeparatorShown((userMainInfo$ | async)?.educations?.length, i)"></div>
+      </div>
+    </ng-template>
+  </div>
+  <div id="academicDegreeGain_inf">
+    <div id="academicDegreeGain_inf_title">
+      <h3 class="block_ttl">Отримання вченого звання</h3>
+      <div class="edit fl_r" *ngIf="isMyPage || isAdmin">
+        <a [routerLink]="['/edit-profile', userId]">Редагувати</a>
+      </div>
+    </div>
+    <div class="no_inf" *ngIf="(userMainInfo$ | async)?.academicDegrees?.length === 0; else academicDegreeInfo">Інформація відсутня</div>
+    <ng-template #academicDegreeInfo>
+      <div *ngFor="let academicDegree of (userMainInfo$ | async)?.academicDegrees; let i = index">
+        <h4 class="clear_fix miniblock">
+          <span class="label">Звання: </span>
+          <span class="labeled">
+            {{ academicDegree?.type ?? 'Інформація відсутня' }}
+          </span>
+        </h4>
+        <h4 class="clear_fix miniblock" *ngIf="isMyPage || isAdmin">
+          <span class="label">Номер диплома: </span>
+          <span class="labeled">
+            {{ academicDegree?.diplomaNumber ?? 'Інформація відсутня' }}
+          </span>
+        </h4>
+        <h4 class="clear_fix miniblock" *ngIf="isMyPage || isAdmin">
+          <span class="label">Дата отримання диплома: </span>
+          <span class="labeled">
+            {{ academicDegree?.receiveDiplomaDate ?? 'Інформація відсутня' }}
+          </span>
+        </h4>
+        <div class="separator" *ngIf="isSeparatorShown((userMainInfo$ | async)?.academicDegrees?.length, i)"></div>
+      </div>
+    </ng-template>
+  </div>
+  <div id="dissertDefense_inf">
+    <div id="dissertDefense_inf_title">
+      <h3 class="block_ttl">Захист дисертацій</h3>
+      <div class="edit fl_r" *ngIf="isMyPage || isAdmin">
+        <a [routerLink]="['/edit-profile', userId]">Редагувати</a>
+      </div>
+    </div>
+    <div class="no_inf">Інформація відсутня</div>
+  </div>
+  <div id="subj_inf">
+    <div id="subj_title">
+      <h3 class="block_ttl">Викладацька діяльність</h3>
+      <div class="edit fl_r" *ngIf="isMyPage || isAdmin">
+        <a [routerLink]="['/edit-profile', userId]">Редагувати</a>
+      </div>
+    </div>
+    <div class="no_inf">Інформація відсутня</div>
+  </div>
+  <div id="scientometricDbProfiles_inf">
+    <div id="scientometricDbProfiles_inf_title">
+      <h3 class="block_ttl">Профілі в наукометричних базах</h3>
+      <div class="edit fl_r" *ngIf="isMyPage || isAdmin">
+        <a [routerLink]="['/edit-profile', userId]">Редагувати</a>
+      </div>
+    </div>
+    <div class="no_inf" *ngIf="(userMainInfo$ | async)?.scientometricDbProfiles?.length === 0; else scientometricDbProfilesInfo">Інформація відсутня</div>
+    <ng-template #scientometricDbProfilesInfo>
+      <div *ngFor="let scientometricDbProfile of (userMainInfo$ | async)?.scientometricDbProfiles; let i = index">
+        <h4 class="clear_fix miniblock" *ngIf="isMyPage || isAdmin">
+          <span class="label">Назва бази: </span>
+          <span class="labeled">
+            {{ scientometricDbProfile?.name ?? 'Інформація відсутня' }}
+          </span>
+        </h4>
+        <h4 class="clear_fix miniblock" *ngIf="isMyPage || isAdmin">
+          <span class="label">Покликання на профіль: </span>
+          <span class="labeled">
+            <a href="{{ scientometricDbProfile?.profileLink }}">{{ scientometricDbProfile?.profileLink ?? 'Інформація відсутня'}}</a>
+          </span>
+        </h4>
+        <div class="separator" *ngIf="isSeparatorShown((userMainInfo$ | async)?.scientometricDbProfiles?.length, i)"></div>
+      </div>
+    </ng-template>
+  </div>
+</ng-template>

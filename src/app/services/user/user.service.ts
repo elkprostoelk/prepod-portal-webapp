@@ -3,12 +3,14 @@ import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, map, Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {UserTokenDto} from "../../dtos/UserTokenDto";
-import { JwtHelperService } from '@auth0/angular-jwt';
+import {JwtHelperService} from '@auth0/angular-jwt';
 import {UserDto} from "../../dtos/UserDto";
 import {tokenGetter} from "../../app.module";
 import {ShortUserInfoDto} from "../../dtos/ShortUserInfoDto";
 import {ServiceTypedResult} from "../../dtos/ServiceResult";
 import {CreatedUserDto} from "../../dtos/CreatedUserDto";
+import {UserMainInfoDto} from "../../dtos/UserMainInfoDto";
+import {UserAvatarAndNameDto} from "../../dtos/UserAvatarAndNameDto";
 
 @Injectable({
   providedIn: 'root'
@@ -82,5 +84,13 @@ export class UserService {
 
   registerTeacher(value: any): Observable<CreatedUserDto> {
     return this.http.post<CreatedUserDto>(`${environment.apiPath}user/new-teacher`, value);
+  }
+
+  getUserMainInfo(userId: string): Observable<UserMainInfoDto> {
+    return this.http.get<UserMainInfoDto>(`${environment.apiPath}user/main-info/${userId}`);
+  }
+
+  getUserAvatarAndName(userId: string): Observable<UserAvatarAndNameDto> {
+    return this.http.get<UserAvatarAndNameDto>(`${environment.apiPath}user/name-and-avatar/${userId}`);
   }
 }
