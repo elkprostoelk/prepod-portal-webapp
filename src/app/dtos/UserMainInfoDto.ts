@@ -1,6 +1,7 @@
 import {ScientometricDbProfileDto} from "./ScientometricDbProfileDto";
 import {ShortAcademicDegreeDto} from "./ShortAcademicDegreeDto";
 import {ShortEducationDto} from "./ShortEducationDto";
+import {DissertationDefenseDto} from "./DissertaionDefenseDto";
 
 export interface UserMainInfoDto {
   town: string | null;
@@ -14,5 +15,6 @@ export interface UserMainInfoDto {
   department: string;
   scientometricDbProfiles: ScientometricDbProfileDto[],
   academicDegrees: ShortAcademicDegreeDto[],
-  educations: ShortEducationDto[]
+  educations: ShortEducationDto[],
+  dissertationDefenses: DissertationDefenseDto[]
 }

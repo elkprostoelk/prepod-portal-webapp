@@ -159,7 +159,60 @@
         <a [routerLink]="['/edit-profile', userId]">Редагувати</a>
       </div>
     </div>
-    <div class="no_inf">Інформація відсутня</div>
+    <div class="no_inf" *ngIf="(userMainInfo$ | async)?.dissertationDefenses?.length === 0; else dissertationDefensesInfo">Інформація відсутня</div>
+    <ng-template #dissertationDefensesInfo>
+      <div *ngFor="let dissertationDefense of (userMainInfo$ | async)?.dissertationDefenses; let i = index">
+        <h4 class="clear_fix miniblock" *ngIf="!isMyPage && dissertationDefense?.type !== null || isMyPage || isAdmin">
+          <div class="label fl_l">Вид дисертації: </div>
+          <div class="labeled fl_l">
+            {{ dissertationDefense?.type ?? 'Інформація відсутня' }}
+          </div>
+        </h4>
+        <h4 class="clear_fix miniblock" *ngIf="!isMyPage && dissertationDefense?.cipherAndSpecialty !== null || isMyPage || isAdmin">
+          <div class="label fl_l">Шифр і назва спец.: </div>
+          <div class="labeled fl_l">
+            {{ dissertationDefense?.cipherAndSpecialty ?? 'Інформація відсутня' }}
+          </div>
+        </h4>
+        <h4 class="clear_fix miniblock" *ngIf="!isMyPage && dissertationDefense?.theme !== null || isMyPage || isAdmin">
+          <div class="label fl_l">Тема дисертації: </div>
+          <div class="labeled fl_l">
+            {{ dissertationDefense?.theme ?? 'Інформація відсутня' }}
+          </div>
+        </h4>
+        <h4 class="clear_fix miniblock" *ngIf="!isMyPage && dissertationDefense?.diplomaNumber !== null || isMyPage || isAdmin">
+          <div class="label fl_l">Номер диплома: </div>
+          <div class="labeled fl_l">
+            {{ dissertationDefense?.diplomaNumber ?? 'Інформація відсутня' }}
+          </div>
+        </h4>
+        <h4 class="clear_fix miniblock" *ngIf="!isMyPage && dissertationDefense?.defenseLocationAndWhoAssignedBy !== null || isMyPage || isAdmin">
+          <div class="label fl_l">Де захищена/ким присвоєно: </div>
+          <div class="labeled fl_l">
+            {{ dissertationDefense?.defenseLocationAndWhoAssignedBy ?? 'Інформація відсутня' }}
+          </div>
+        </h4>
+        <h4 class="clear_fix miniblock" *ngIf="!isMyPage && dissertationDefense?.scientificDirector !== null || isMyPage || isAdmin">
+          <div class="label fl_l">Науковий керівник: </div>
+          <div class="labeled fl_l">
+            {{ dissertationDefense?.scientificDirector ?? 'Інформація відсутня' }}
+          </div>
+        </h4>
+        <h4 class="clear_fix miniblock" *ngIf="!isMyPage && dissertationDefense?.defenseDate !== null || isMyPage || isAdmin">
+          <div class="label fl_l">Дата захисту: </div>
+          <div class="labeled fl_l">
+            {{ dissertationDefense?.defenseDate ?? 'Інформація відсутня' }}
+          </div>
+        </h4>
+        <h4 class="clear_fix miniblock" *ngIf="!isMyPage && dissertationDefense?.receiveDiplomaDate !== null || isMyPage || isAdmin">
+          <div class="label fl_l">Дата отримання диплома: </div>
+          <div class="labeled fl_l">
+            {{ dissertationDefense?.receiveDiplomaDate ?? 'Інформація відсутня' }}
+          </div>
+        </h4>
+        <div class="separator" *ngIf="isSeparatorShown((userMainInfo$ | async)?.dissertationDefenses?.length, i)"></div>
+      </div>
+    </ng-template>
   </div>
   <div id="subj_inf">
     <div id="subj_title">
