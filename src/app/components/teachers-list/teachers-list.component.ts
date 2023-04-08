@@ -3,6 +3,7 @@ import {UserService} from "../../services/user/user.service";
 import {Router} from "@angular/router";
 import {BehaviorSubject} from "rxjs";
 import {ShortUserInfoDto} from "../../dtos/ShortUserInfoDto";
+import {isNullOrUndefined} from "../../helping-methods";
 
 @Component({
   selector: 'app-teachers-list',
@@ -10,6 +11,7 @@ import {ShortUserInfoDto} from "../../dtos/ShortUserInfoDto";
   styleUrls: ['./teachers-list.component.css']
 })
 export class TeachersListComponent {
+  isNullOrUndefined = isNullOrUndefined;
   teachers$: BehaviorSubject<ShortUserInfoDto[] | undefined> =
     new BehaviorSubject<ShortUserInfoDto[] | undefined>(undefined);
   constructor(
@@ -17,6 +19,7 @@ export class TeachersListComponent {
     private readonly router: Router) {
     userService.getAllTeachersList().subscribe({
       next: teachers => {
+        console.log(teachers);
         this.teachers$.next(teachers.container);
       }
     })

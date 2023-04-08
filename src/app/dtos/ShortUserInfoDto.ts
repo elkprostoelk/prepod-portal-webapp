@@ -4,7 +4,7 @@ export interface ShortUserInfoDto {
   department: string,
   avatarImg: string,
   town: string | undefined,
-  workPlaceLocation: string | undefined,
+  workplaceLocation: string | undefined,
   academicTitle: string | undefined,
   scienceDegree: string | undefined
 }

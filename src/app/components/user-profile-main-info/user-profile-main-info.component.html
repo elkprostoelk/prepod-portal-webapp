@@ -24,7 +24,7 @@
       <h4 class="clear_fix miniblock" *ngIf="!isMyPage && (userMainInfo$ | async)?.birthDate !== null || isAdmin || isMyPage">
         <span class="label">Дата народження:</span>
         <span class="labeled">
-          {{ (userMainInfo$ | async)?.birthDate ?? 'Інформація відсутня' }}
+          {{ ((userMainInfo$ | async)?.birthDate | date: 'longDate':'':'uk-UA') ?? 'Інформація відсутня' }}
         </span>
       </h4>
       <h4 class="clear_fix miniblock">
@@ -145,7 +145,7 @@
         <h4 class="clear_fix miniblock" *ngIf="isMyPage || isAdmin">
           <span class="label">Дата отримання диплома: </span>
           <span class="labeled">
-            {{ academicDegree?.receiveDiplomaDate ?? 'Інформація відсутня' }}
+            {{ (academicDegree?.receiveDiplomaDate | date: 'longDate':'':'uk-UA') ?? 'Інформація відсутня' }}
           </span>
         </h4>
         <div class="separator" *ngIf="isSeparatorShown((userMainInfo$ | async)?.academicDegrees?.length, i)"></div>
@@ -201,13 +201,13 @@
         <h4 class="clear_fix miniblock" *ngIf="!isMyPage && dissertationDefense?.defenseDate !== null || isMyPage || isAdmin">
           <div class="label fl_l">Дата захисту: </div>
           <div class="labeled fl_l">
-            {{ dissertationDefense?.defenseDate ?? 'Інформація відсутня' }}
+            {{ (dissertationDefense?.defenseDate | date: 'longDate':'':'uk-UA') ?? 'Інформація відсутня' }}
           </div>
         </h4>
         <h4 class="clear_fix miniblock" *ngIf="!isMyPage && dissertationDefense?.receiveDiplomaDate !== null || isMyPage || isAdmin">
           <div class="label fl_l">Дата отримання диплома: </div>
           <div class="labeled fl_l">
-            {{ dissertationDefense?.receiveDiplomaDate ?? 'Інформація відсутня' }}
+            {{ (dissertationDefense?.receiveDiplomaDate | date: 'longDate':'':'uk-UA') ?? 'Інформація відсутня' }}
           </div>
         </h4>
         <div class="separator" *ngIf="isSeparatorShown((userMainInfo$ | async)?.dissertationDefenses?.length, i)"></div>
@@ -221,7 +221,17 @@
         <a [routerLink]="['/edit-profile', userId]">Редагувати</a>
       </div>
     </div>
-    <div class="no_inf">Інформація відсутня</div>
+    <div class="no_inf" *ngIf="(userMainInfo$ | async)?.subjects?.length === 0; else subjectsInfo">Інформація відсутня</div>
+    <ng-template #subjectsInfo>
+      <h4 class="clear_fix miniblock">
+        <div class="label fl_l">Дисципліни й к-сть годин: </div>
+        <div class="labeled fl_l">
+          <div class="subj_ttl" *ngFor="let subject of (userMainInfo$ | async)?.subjects">
+            {{ subject?.title }} - {{ subject.hoursCount }} год
+          </div>
+        </div>
+      </h4>
+    </ng-template>
   </div>
   <div id="scientometricDbProfiles_inf">
     <div id="scientometricDbProfiles_inf_title">

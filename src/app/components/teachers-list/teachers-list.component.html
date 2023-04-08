@@ -15,7 +15,11 @@
       </a>
     </div>
     <div class="teacher_mainInf">
-      <div class="no-info" *ngIf="teacher.scienceDegree !== undefined && teacher.academicTitle !== undefined && teacher.workPlaceLocation !== undefined && teacher.town !== undefined; else anyInfoSpecified">
+      <div class="no-info" *ngIf="isNullOrUndefined(teacher.scienceDegree)
+        && isNullOrUndefined(teacher.academicTitle)
+        && isNullOrUndefined(teacher.workplaceLocation)
+        && isNullOrUndefined(teacher.town)
+        && isNullOrUndefined(teacher.department); else anyInfoSpecified">
         Інформація відсутня
       </div>
       <ng-template #anyInfoSpecified>
@@ -23,7 +27,7 @@
           <span>Поточне місто: {{teacher.town ?? 'Інформація відсутня'}}</span>
         </div>
         <div>
-          <span>Поточне місце роботи: {{teacher.workPlaceLocation ?? 'Інформація відсутня'}}</span>
+          <span>Поточне місце роботи: {{teacher.workplaceLocation ?? 'Інформація відсутня'}}</span>
         </div>
         <div>
           <span>Кафедра: {{teacher.department}}</span>

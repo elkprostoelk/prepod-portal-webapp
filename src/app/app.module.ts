@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import localeUk from "@angular/common/locales/uk";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -16,6 +16,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NewTeacherComponent } from './components/new-teacher/new-teacher.component';
 import { AboutComponent } from './components/about/about.component';
 import { UserProfileMainInfoComponent } from './components/user-profile-main-info/user-profile-main-info.component';
+import {registerLocaleData} from "@angular/common";
+registerLocaleData(localeUk);
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
