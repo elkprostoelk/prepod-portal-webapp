@@ -15,9 +15,9 @@
     </div>
     <div id="prof_sections">
       <a [class]="activeStateClasses[0]" [routerLink]="['main-info']" (click)="changeActiveState(0)">Основна інформація</a>
-      <a [class]="activeStateClasses[1]" href="#" (click)="changeActiveState(1)">Наукова діяльність</a>
-      <a [class]="activeStateClasses[2]" href="#" (click)="changeActiveState(2)">Наукові звіти</a>
-      <a [class]="activeStateClasses[3]" href="#" (click)="changeActiveState(3)">Проєкти</a>
+      <a [class]="activeStateClasses[1]" [routerLink]="['science-work']" (click)="changeActiveState(1)">Наукова діяльність</a>
+      <a [class]="activeStateClasses[2]" [routerLink]="['scientific-reports']" (click)="changeActiveState(2)">Наукові звіти</a>
+      <a [class]="activeStateClasses[3]" [routerLink]="['projects']" (click)="changeActiveState(3)">Проєкти</a>
     </div>
     <div id="manage_links" *ngIf="userId !== undefined || isAdmin">
       <a [routerLink]="['/profile', loggedUserId]" *ngIf="userId">Моя сторінка</a>

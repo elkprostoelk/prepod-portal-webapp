@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {UserService} from "../../services/user/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Observable} from "rxjs";
 import {UserAvatarAndNameDto} from "../../dtos/UserAvatarAndNameDto";
 import {environment} from "../../environments/environment";
 

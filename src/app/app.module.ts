@@ -17,6 +17,9 @@ import { NewTeacherComponent } from './components/new-teacher/new-teacher.compon
 import { AboutComponent } from './components/about/about.component';
 import { UserProfileMainInfoComponent } from './components/user-profile-main-info/user-profile-main-info.component';
 import {registerLocaleData} from "@angular/common";
+import { UserProfileScienceWorkComponent } from './components/user-profile-science-work/user-profile-science-work.component';
+import { UserProfileScientificReportsComponent } from './components/user-profile-scientific-reports/user-profile-scientific-reports.component';
+import { UserProfileProjectsComponent } from './components/user-profile-projects/user-profile-projects.component';
 registerLocaleData(localeUk);
 
 export function tokenGetter() {
@@ -32,7 +35,10 @@ export function tokenGetter() {
     NotFoundComponent,
     NewTeacherComponent,
     AboutComponent,
-    UserProfileMainInfoComponent
+    UserProfileMainInfoComponent,
+    UserProfileScienceWorkComponent,
+    UserProfileScientificReportsComponent,
+    UserProfileProjectsComponent
   ],
     imports: [
       BrowserModule,
