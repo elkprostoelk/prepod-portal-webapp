@@ -20,6 +20,10 @@ import {registerLocaleData} from "@angular/common";
 import { UserProfileScienceWorkComponent } from './components/user-profile-science-work/user-profile-science-work.component';
 import { UserProfileScientificReportsComponent } from './components/user-profile-scientific-reports/user-profile-scientific-reports.component';
 import { UserProfileProjectsComponent } from './components/user-profile-projects/user-profile-projects.component';
+import { ScienceWorkQualificationIncreasesComponent } from './components/science-work-qualification-increases/science-work-qualification-increases.component';
+import { ScienceWorkPublicationsComponent } from './components/science-work-publications/science-work-publications.component';
+import { ScienceWorkConferencesComponent } from './components/science-work-conferences/science-work-conferences.component';
+import { ScienceWorkSecurityDocumentsComponent } from './components/science-work-security-documents/science-work-security-documents.component';
 registerLocaleData(localeUk);
 
 export function tokenGetter() {
@@ -38,7 +42,11 @@ export function tokenGetter() {
     UserProfileMainInfoComponent,
     UserProfileScienceWorkComponent,
     UserProfileScientificReportsComponent,
-    UserProfileProjectsComponent
+    UserProfileProjectsComponent,
+    ScienceWorkQualificationIncreasesComponent,
+    ScienceWorkPublicationsComponent,
+    ScienceWorkConferencesComponent,
+    ScienceWorkSecurityDocumentsComponent
   ],
     imports: [
       BrowserModule,
