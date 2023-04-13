@@ -1,8 +1,6 @@
 <div id="prepod_profile">
   <div id="prepod_name">
     <h1>{{ nameAndAvatar?.name }}</h1>
-    <!--@if (C.GetMyId(User) != Model.UserId && User.Identity.IsAuthenticated)-->
-
     <div id="ttl_side_links" *ngIf="isAuthenticated && !isMyPage"><a [routerLink]="['/profile', loggedUserId]">Моя сторінка</a></div>
 
   </div>
@@ -19,11 +17,11 @@
       <a [class]="activeStateClasses[2]" [routerLink]="['scientific-reports']" (click)="changeActiveState(2)">Наукові звіти</a>
       <a [class]="activeStateClasses[3]" [routerLink]="['projects']" (click)="changeActiveState(3)">Проєкти</a>
     </div>
-    <div id="manage_links" *ngIf="userId !== undefined || isAdmin">
-      <a [routerLink]="['/profile', loggedUserId]" *ngIf="userId">Моя сторінка</a>
-      <a [routerLink]="['/manage',userId]" *ngIf="userId">Налаштування</a>
-      <a [routerLink]="['/edit-profile', loggedUserId]">Редагувати</a>
-      <a href="javascript:void(0)" *ngIf="isAuthenticated && userId" (click)="logout()">Вийти</a>
+    <div id="manage_links" *ngIf="isMyPage || isAdmin">
+      <a [routerLink]="['/profile', loggedUserId]" *ngIf="isMyPage">Моя сторінка</a>
+      <a [routerLink]="['/manage', loggedUserId]" *ngIf="isMyPage">Налаштування</a>
+      <a [routerLink]="['/edit-profile', userId]">Редагувати</a>
+      <a href="javascript:void(0)" *ngIf="isAuthenticated && isMyPage" (click)="logout()">Вийти</a>
     </div>
   </div>
   <div id="right_col_wrap">
