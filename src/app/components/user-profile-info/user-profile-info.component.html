@@ -5,11 +5,26 @@
 
   </div>
   <div id="left_col">
-    <div id="avatarImgWrap">
+    <!-- onmouseover="showAvatarItems()" onmouseout="hideAvatarItems()"-->
+    <div id="avatarImgWrap" (mouseover)="showAvatarItems()" (mouseout)="hideAvatarItems()">
       <a href="{{serverPath}}{{nameAndAvatar?.avatarImagePath}}" class="flipLightBox 1" style="cursor: zoom-in" *ngIf="nameAndAvatar?.avatarImagePath">
         <img src="{{serverPath}}{{nameAndAvatar?.avatarImagePath}}" id="avatarImg" alt="user avatar" />
       </a>
-
+      <span *ngIf="isAdmin || isMyPage">
+        <form id="uploadAvatarForm" [formGroup]="changeAvatarForm">
+          <input type="file"
+                 accept="image/jpeg,image/png"
+                 formControlName="avatarImageFile"
+                 name="avatarImageFile"
+                 id="avatarImageFile"
+                 title="Upload the image"
+                 alt="Upload the image"
+                 (change)="onChangeAvatar($event)" />
+          <input type="hidden" [value]="userId" formControlName="userId">
+        </form>
+        <div id="uploadAvatar" (click)="uploadAvatar()">&nbsp;</div>
+        <div id="deleteAvatar" (click)="deleteAvatar()" *ngIf="!isImageDefault">x</div>
+      </span>
     </div>
     <div id="prof_sections">
       <a [class]="activeStateClasses[0]" [routerLink]="['main-info']" (click)="changeActiveState(0)">Основна інформація</a>

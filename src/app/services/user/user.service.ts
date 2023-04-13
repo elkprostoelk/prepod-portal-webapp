@@ -16,7 +16,7 @@ import {UserAvatarAndNameDto} from "../../dtos/UserAvatarAndNameDto";
   providedIn: 'root'
 })
 export class UserService {
-
+  userPath: string = `${environment.apiPath}user/`;
   loggedUserSubject: BehaviorSubject<UserDto | undefined>;
   public loggedInUser: Observable<UserDto | undefined>;
   constructor(
@@ -39,7 +39,7 @@ export class UserService {
   }
 
   getAllTeachersList(): Observable<ServiceTypedResult<ShortUserInfoDto[]>> {
-    return this.http.get<ServiceTypedResult<ShortUserInfoDto[]>>(`${environment.apiPath}user/teachers-list`);
+    return this.http.get<ServiceTypedResult<ShortUserInfoDto[]>>(`${this.userPath}teachers-list`);
   }
 
   logoutUser() {
@@ -83,14 +83,24 @@ export class UserService {
   }
 
   registerTeacher(value: any): Observable<CreatedUserDto> {
-    return this.http.post<CreatedUserDto>(`${environment.apiPath}user/new-teacher`, value);
+    return this.http.post<CreatedUserDto>(`${this.userPath}new-teacher`, value);
   }
 
   getUserMainInfo(userId: string): Observable<UserMainInfoDto> {
-    return this.http.get<UserMainInfoDto>(`${environment.apiPath}user/main-info/${userId}`);
+    return this.http.get<UserMainInfoDto>(`${this.userPath}main-info/${userId}`);
   }
 
   getUserAvatarAndName(userId: string): Observable<UserAvatarAndNameDto> {
-    return this.http.get<UserAvatarAndNameDto>(`${environment.apiPath}user/name-and-avatar/${userId}`);
+    return this.http.get<UserAvatarAndNameDto>(`${this.userPath}name-and-avatar/${userId}`);
+  }
+
+  changeUserAvatar(changeUserAvatarForm: FormData): Observable<any> {
+    return this.http.patch<any>(
+      `${this.userPath}change-avatar`,
+      changeUserAvatarForm);
+  }
+
+  deleteUserAvatar(userId: string): Observable<any> {
+    return this.http.delete(`${this.userPath}delete-avatar/${userId}`)
   }
 }
