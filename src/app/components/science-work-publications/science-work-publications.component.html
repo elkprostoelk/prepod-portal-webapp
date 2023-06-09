@@ -1,1 +1,82 @@
-<p>science-work-publications works!</p>
+<div class="scienceTab_header">
+  <a href="javascript:void(0)">Додати публікацію</a>
+  <a class="csv-link" href="javascript:void(0)">Додати декілька статей (CSV-файл)</a>
+  <div style="position:relative;display:inline-block;{{ filterLinkMargin }}">
+    <a href="javascript:void(0)">Фільтр</a>
+  </div>
+</div>
+<div class="scienceTab_body_wrap">
+  <div id="ajax_loader_publications" class="ajax_loader" *ngIf="(publications$ | async) === null; else publicationsList"></div>
+  <ng-template #publicationsList>
+    <div id="publs_body">
+      <div class="scienceBlock" *ngFor="let publication of publications$ | async">
+        <div class="remove_scienceBlock" *ngIf="isAdmin || isMyPublication(publication)" (click)="removePublication(publication.id)"></div>
+        <div class="scienceBlock_title">{{publication.title}}</div>
+        <div class="scienceBlock_mainInf" *ngIf="getArticleDto(publication) !== undefined">
+          <div><span>Тип публікації: </span>{{publication.publicationType}}</div>
+          <div><span>Вид: </span>{{getArticleDto(publication)?.articleType}}</div>
+          <div><span>Автори: </span>{{publication.authors.join(', ')}}</div>
+          <div><span>Видання: </span>{{getArticleDto(publication)?.editionName}}</div>
+          <div><span>Номер: </span>{{getArticleDto(publication)?.number}}</div>
+          <div><span>Випуск: </span>{{getArticleDto(publication)?.issue}}</div>
+          <div><span>Том: </span>{{getArticleDto(publication)?.tome}}</div>
+          <div><span>Місце видання: </span>{{getArticleDto(publication)?.publishedLocation}}</div>
+          <div><span>Рік видання: </span>{{getArticleDto(publication)?.publishedYear}}</div>
+          <div><span>Номера сторінок: </span>{{getArticleDto(publication)?.pageNumbers}}</div>
+          <div><span>URL: </span>{{getArticleDto(publication)?.url}}</div>
+          <div *ngIf="getArticleDto(publication)?.isWoSOrScopus"><span>НМБД: </span>{{getArticleDto(publication)?.scientometricDb}}</div>
+          <div *ngIf="getArticleDto(publication)?.isWoSOrScopus"><span>SNIP індекс: </span>{{getArticleDto(publication)?.snipIndex}}</div>
+          <div><span>Загальна к-сть сторінок: </span>{{publication.totalPagesCount}}</div>
+          <div><span>К-сть сторінок написано автором: </span>{{publication.authorPagesCount}}</div>
+          <div><span>Загальна к-сть друкованих сторінок: </span>{{publication.totalPrintedPageCount}}</div>
+          <div><span>К-сть друкованих сторінок написано автором: </span>{{publication.printedAuthorPagesCount}}</div>
+        </div>
+        <div class="scienceBlock_mainInf" *ngIf="getMonographDto(publication) !== undefined">
+          <div><span>Тип публікації: </span>{{publication.publicationType}}</div>
+          <div><span>Вид: </span>{{getMonographDto(publication)?.monographType}}</div>
+          <div><span>Автори: </span>{{publication.authors.join(', ')}}</div>
+          <div><span>ISBN: </span>{{getMonographDto(publication)?.isbn}}</div>
+          <div><span>Місце видання: </span>{{getMonographDto(publication)?.publishedLocation}}</div>
+          <div><span>Рік видання: </span>{{getMonographDto(publication)?.publishedYear}}</div>
+          <div><span>Загальна к-сть сторінок: </span>{{publication.totalPagesCount}}</div>
+          <div><span>К-сть сторінок написано автором: </span>{{publication.authorPagesCount}}</div>
+          <div><span>Загальна к-сть друкованих сторінок: </span>{{publication.totalPrintedPageCount}}</div>
+          <div><span>К-сть друкованих сторінок написано автором: </span>{{publication.printedAuthorPagesCount}}</div>
+        </div>
+        <div class="scienceBlock_mainInf" *ngIf="getSchoolBookDto(publication) !== undefined">
+          <div><span>Тип публікації: </span>{{publication.publicationType}}</div>
+          <div><span>Вид: </span>{{getSchoolBookDto(publication)?.schoolBookType}}</div>
+          <div *ngIf="getSchoolBookDto(publication)?.schoolBookType === 'GryphMOHOfUkraine'">
+            <span>Тип грифу: </span>{{getSchoolBookDto(publication)?.gryphType}}
+          </div>
+          <div><span>Автори: </span>{{publication.authors.join(', ')}}</div>
+          <div><span>ISBN: </span>{{getSchoolBookDto(publication)?.isbn}}</div>
+          <div><span>Номер наказу: </span>{{getSchoolBookDto(publication)?.orderNum}}</div>
+          <div><span>Дата наказу: </span>{{getSchoolBookDto(publication)?.orderDate}}</div>
+          <div><span>Місце видання: </span>{{getSchoolBookDto(publication)?.publishedLocation}}</div>
+          <div><span>Рік видання: </span>{{getSchoolBookDto(publication)?.publishedYear}}</div>
+          <div><span>Загальна к-сть сторінок: </span>{{publication.totalPagesCount}}</div>
+          <div><span>К-сть сторінок написано автором: </span>{{publication.authorPagesCount}}</div>
+          <div><span>Загальна к-сть друкованих сторінок: </span>{{publication.totalPrintedPageCount}}</div>
+          <div><span>К-сть друкованих сторінок написано автором: </span>{{publication.printedAuthorPagesCount}}</div>
+        </div>
+        <div class="scienceBlock_mainInf" *ngIf="getLectureThesesDto(publication) !== undefined">
+          <div><span>Тип публікації: </span>{{publication.publicationType}}</div>
+          <div><span>Автори: </span>{{publication.authors.join(', ')}}</div>
+          <div><span>Видання: </span>{{getLectureThesesDto(publication)?.editionTitle}}</div>
+          <div><span>Номер: </span>{{getLectureThesesDto(publication)?.number}}</div>
+          <div><span>Випуск: </span>{{getLectureThesesDto(publication)?.issue}}</div>
+          <div><span>Том: </span>{{getLectureThesesDto(publication)?.tome}}</div>
+          <div><span>Місце видання: </span>{{getLectureThesesDto(publication)?.publishedLocation}}</div>
+          <div><span>Рік видання: </span>{{getLectureThesesDto(publication)?.publishedYear}}</div>
+          <div><span>Номера сторінок: </span>{{getLectureThesesDto(publication)?.pageNumbers}}</div>
+          <div><span>URL: </span>{{getLectureThesesDto(publication)?.url}}</div>
+          <div><span>Загальна к-сть сторінок: </span>{{publication.totalPagesCount}}</div>
+          <div><span>К-сть сторінок написано автором: </span>{{publication.authorPagesCount}}</div>
+          <div><span>Загальна к-сть друкованих сторінок: </span>{{publication.totalPrintedPageCount}}</div>
+          <div><span>К-сть друкованих сторінок написано автором: </span>{{publication.printedAuthorPagesCount}}</div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

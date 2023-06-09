@@ -6,7 +6,7 @@ import {UserTokenDto} from "../../dtos/UserTokenDto";
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {UserDto} from "../../dtos/UserDto";
 import {tokenGetter} from "../../app.module";
-import {ShortUserInfoDto} from "../../dtos/ShortUserInfoDto";
+import {BriefUserInfoDto} from "../../dtos/BriefUserInfoDto";
 import {ServiceTypedResult} from "../../dtos/ServiceResult";
 import {CreatedUserDto} from "../../dtos/CreatedUserDto";
 import {UserMainInfoDto} from "../../dtos/UserMainInfoDto";
@@ -38,8 +38,8 @@ export class UserService {
     }));
   }
 
-  getAllTeachersList(): Observable<ServiceTypedResult<ShortUserInfoDto[]>> {
-    return this.http.get<ServiceTypedResult<ShortUserInfoDto[]>>(`${this.userPath}teachers-list`);
+  getAllTeachersList(): Observable<ServiceTypedResult<BriefUserInfoDto[]>> {
+    return this.http.get<ServiceTypedResult<BriefUserInfoDto[]>>(`${this.userPath}teachers-list`);
   }
 
   logoutUser() {

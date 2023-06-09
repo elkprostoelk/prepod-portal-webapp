@@ -109,23 +109,27 @@ export class UserProfileInfoComponent {
   }
 
   showAvatarItems(): void {
-    let deleteAvatar = document.getElementById('deleteAvatar');
-    if (deleteAvatar) {
-      deleteAvatar.style.display = 'block';
+    if (this.isAdmin || this.isMyPage) {
+      let deleteAvatar = document.getElementById('deleteAvatar');
+      if (deleteAvatar) {
+        deleteAvatar.style.display = 'block';
+      }
+      let uploadAvatar = document.getElementById('uploadAvatar')!;
+      uploadAvatar.style.opacity = '1';
+      uploadAvatar.style.height = '32px';
     }
-    let uploadAvatar = document.getElementById('uploadAvatar')!;
-    uploadAvatar.style.opacity = '1';
-    uploadAvatar.style.height = '32px';
   }
 
   hideAvatarItems(): void {
-    let deleteAvatar = document.getElementById('deleteAvatar');
-    if (deleteAvatar) {
-      deleteAvatar.style.display = 'none';
+    if (this.isAdmin || this.isMyPage) {
+      let deleteAvatar = document.getElementById('deleteAvatar');
+      if (deleteAvatar) {
+        deleteAvatar.style.display = 'none';
+      }
+      let uploadAvatar = document.getElementById('uploadAvatar')!;
+      uploadAvatar.style.opacity = '0';
+      uploadAvatar.style.height = '0';
     }
-    let uploadAvatar = document.getElementById('uploadAvatar')!;
-    uploadAvatar.style.opacity = '0';
-    uploadAvatar.style.height = '0';
   }
 
   uploadAvatar() {

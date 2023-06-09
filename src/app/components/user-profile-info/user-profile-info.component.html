@@ -22,7 +22,7 @@
                  (change)="onChangeAvatar($event)" />
           <input type="hidden" [value]="userId" formControlName="userId">
         </form>
-        <div id="uploadAvatar" (click)="uploadAvatar()">&nbsp;</div>
+        <div id="uploadAvatar" (click)="uploadAvatar()">&</div>
         <div id="deleteAvatar" (click)="deleteAvatar()" *ngIf="!isImageDefault">x</div>
       </span>
     </div>

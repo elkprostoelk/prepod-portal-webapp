@@ -1,4 +1,4 @@
-export interface ShortUserInfoDto {
+export interface BriefUserInfoDto {
   id: string,
   name: string,
   department: string,

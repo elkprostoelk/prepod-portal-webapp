@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {UserService} from "../../services/user/user.service";
 import {Router} from "@angular/router";
 import {BehaviorSubject} from "rxjs";
-import {ShortUserInfoDto} from "../../dtos/ShortUserInfoDto";
+import {BriefUserInfoDto} from "../../dtos/BriefUserInfoDto";
 import {isNullOrUndefined} from "../../helping-methods";
 
 @Component({
@@ -12,8 +12,8 @@ import {isNullOrUndefined} from "../../helping-methods";
 })
 export class TeachersListComponent {
   isNullOrUndefined = isNullOrUndefined;
-  teachers$: BehaviorSubject<ShortUserInfoDto[] | undefined> =
-    new BehaviorSubject<ShortUserInfoDto[] | undefined>(undefined);
+  teachers$: BehaviorSubject<BriefUserInfoDto[] | undefined> =
+    new BehaviorSubject<BriefUserInfoDto[] | undefined>(undefined);
   constructor(
     private readonly userService: UserService,
     private readonly router: Router) {
