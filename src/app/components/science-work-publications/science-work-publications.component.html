@@ -12,8 +12,8 @@
       <div class="scienceBlock" *ngFor="let publication of publications$ | async">
         <div class="remove_scienceBlock" *ngIf="isAdmin || isMyPublication(publication)" (click)="removePublication(publication.id)"></div>
         <div class="scienceBlock_title">{{publication.title}}</div>
-        <div class="scienceBlock_mainInf" *ngIf="getArticleDto(publication) !== undefined">
-          <div><span>Тип публікації: </span>{{publication.publicationType}}</div>
+        <div class="scienceBlock_mainInf" *ngIf="publication.publicationType === 'Article'">
+          <div><span>Тип публікації: </span>Стаття</div>
           <div><span>Вид: </span>{{getArticleDto(publication)?.articleType}}</div>
           <div><span>Автори: </span>{{publication.authors.join(', ')}}</div>
           <div><span>Видання: </span>{{getArticleDto(publication)?.editionName}}</div>
@@ -31,8 +31,8 @@
           <div><span>Загальна к-сть друкованих сторінок: </span>{{publication.totalPrintedPageCount}}</div>
           <div><span>К-сть друкованих сторінок написано автором: </span>{{publication.printedAuthorPagesCount}}</div>
         </div>
-        <div class="scienceBlock_mainInf" *ngIf="getMonographDto(publication) !== undefined">
-          <div><span>Тип публікації: </span>{{publication.publicationType}}</div>
+        <div class="scienceBlock_mainInf" *ngIf="publication.publicationType === 'Monograph'">
+          <div><span>Тип публікації: </span>Монографія</div>
           <div><span>Вид: </span>{{getMonographDto(publication)?.monographType}}</div>
           <div><span>Автори: </span>{{publication.authors.join(', ')}}</div>
           <div><span>ISBN: </span>{{getMonographDto(publication)?.isbn}}</div>
@@ -43,8 +43,8 @@
           <div><span>Загальна к-сть друкованих сторінок: </span>{{publication.totalPrintedPageCount}}</div>
           <div><span>К-сть друкованих сторінок написано автором: </span>{{publication.printedAuthorPagesCount}}</div>
         </div>
-        <div class="scienceBlock_mainInf" *ngIf="getSchoolBookDto(publication) !== undefined">
-          <div><span>Тип публікації: </span>{{publication.publicationType}}</div>
+        <div class="scienceBlock_mainInf" *ngIf="publication.publicationType === 'SchoolBook'">
+          <div><span>Тип публікації: </span>Підручник</div>
           <div><span>Вид: </span>{{getSchoolBookDto(publication)?.schoolBookType}}</div>
           <div *ngIf="getSchoolBookDto(publication)?.schoolBookType === 'GryphMOHOfUkraine'">
             <span>Тип грифу: </span>{{getSchoolBookDto(publication)?.gryphType}}
@@ -60,8 +60,8 @@
           <div><span>Загальна к-сть друкованих сторінок: </span>{{publication.totalPrintedPageCount}}</div>
           <div><span>К-сть друкованих сторінок написано автором: </span>{{publication.printedAuthorPagesCount}}</div>
         </div>
-        <div class="scienceBlock_mainInf" *ngIf="getLectureThesesDto(publication) !== undefined">
-          <div><span>Тип публікації: </span>{{publication.publicationType}}</div>
+        <div class="scienceBlock_mainInf" *ngIf="publication.publicationType === 'LectureTheses'">
+          <div><span>Тип публікації: </span>Тези лекцій</div>
           <div><span>Автори: </span>{{publication.authors.join(', ')}}</div>
           <div><span>Видання: </span>{{getLectureThesesDto(publication)?.editionTitle}}</div>
           <div><span>Номер: </span>{{getLectureThesesDto(publication)?.number}}</div>

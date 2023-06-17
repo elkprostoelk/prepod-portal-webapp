@@ -38,23 +38,23 @@ export class ScienceWorkPublicationsComponent implements OnInit {
   }
 
   isMyPublication(publication: PublicationDto): boolean {
-    return publication.authors.some(author => author.id === this.userService.loggedUserSubject.getValue()?.id);
+    return publication.authors.some(authorId => authorId === this.userService.loggedUserSubject.getValue()?.id);
   }
 
   getArticleDto(publication: PublicationDto): ArticleDto | undefined {
-    return publication instanceof ArticleDto ? publication as ArticleDto : undefined;
+    return publication as ArticleDto;
   }
 
   getMonographDto(publication: PublicationDto) : MonographDto | undefined {
-    return publication instanceof MonographDto ? publication as MonographDto : undefined;
+    return publication as MonographDto;
   }
 
   getSchoolBookDto(publication: PublicationDto): SchoolBookDto | undefined {
-    return publication instanceof SchoolBookDto ? publication as SchoolBookDto : undefined;
+    return publication as SchoolBookDto;
   }
 
   getLectureThesesDto(publication: PublicationDto): LectureThesesDto | undefined {
-    return publication instanceof LectureThesesDto ? publication as LectureThesesDto : undefined;
+    return publication as LectureThesesDto;
   }
 
   removePublication(id: number): void {

@@ -10,7 +10,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
+  failed: boolean = false;
+  toastError: string = '';
   loginForm: FormGroup;
   constructor(
     private readonly builder: FormBuilder,
@@ -36,6 +37,13 @@ export class LoginComponent {
         },
         error: (err: HttpErrorResponse) => {
           console.log(err);
+          this.failed = true;
+          if (Array.isArray(err.error)) {
+            this.toastError = `${err.status} ${err.error}`;
+          }
+          else {
+            this.toastError = `${err.status} ${err.error}`;
+          }
         }
       });
   }

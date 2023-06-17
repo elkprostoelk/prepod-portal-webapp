@@ -1,4 +1,5 @@
 import {ShortUserDto} from "./ShortUserDto";
+import {Observable, of} from "rxjs";
 
 export class PublicationDto {
   id: number;
@@ -11,7 +12,7 @@ export class PublicationDto {
   totalPrintedPageCount: number | null;
   printedAuthorPagesCount: number | null;
   researchWorkId: number | null;
-  authors: ShortUserDto[];
+  authors: string[];
 
   constructor() {
     this.id = 0;

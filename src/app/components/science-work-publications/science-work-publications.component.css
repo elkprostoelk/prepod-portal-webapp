@@ -17,3 +17,79 @@
   top: 0;
   z-index: 9999;
 }
+
+.scienceTab_header {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.scienceTab_body_wrap {
+  position: relative;
+}
+
+.scienceBlock {
+  background: white;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 5px;
+  margin: 5px;
+  position: relative;
+  min-height: 65px;
+}
+
+.scienceBlock {
+  border-top: 0;
+  /*background: url("/Images/science-bg.jpg") no-repeat left top;*/
+  border-radius: 3px;
+  box-shadow: rgb(85, 181, 194) 0 0 6px;
+}
+
+.scienceBlock_mainInf {
+  display: inline-block;
+}
+
+.scienceBlock_mainInf div {
+  color: #3E7091;
+  font-size: 11pt;
+  margin: 4px 0;
+}
+
+.scienceBlock_mainInf div:first-child {
+  margin-top: 8px;
+}
+
+.scienceBlock_mainInf span {
+  color: #666;
+}
+
+.scienceBlock_title {
+  border-bottom: 1px solid silver;
+  color: #0078CA;
+  font-size: 13pt;
+  padding: 4px;
+  padding-right: 15px;
+}
+
+.remove_scienceBlock {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: url(../../../assets/img/delIcon.png) no-repeat scroll center center white;
+  right: -18px;
+  top: 5px;
+  text-decoration: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.edit_scienceBlock {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: url(../../../assets/img/editIcon.png) no-repeat scroll center center white;
+  right: -18px;
+  top: 42px;
+  text-decoration: none;
+  border-radius: 25px;
+  cursor: pointer;
+}

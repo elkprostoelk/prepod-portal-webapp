@@ -19,7 +19,6 @@ export class TeachersListComponent {
     private readonly router: Router) {
     userService.getAllTeachersList().subscribe({
       next: teachers => {
-        console.log(teachers);
         this.teachers$.next(teachers.container);
       }
     })
