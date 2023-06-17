@@ -1,5 +1,5 @@
 <div class="scienceTab_header">
-  <a href="javascript:void(0)">Додати публікацію</a>
+  <a href="javascript:void(0)" *ngIf="isAuthenticated && isMe || isAdmin">Додати публікацію</a>
   <a class="csv-link" href="javascript:void(0)">Додати декілька статей (CSV-файл)</a>
   <div style="position:relative;display:inline-block;{{ filterLinkMargin }}">
     <a href="javascript:void(0)">Фільтр</a>

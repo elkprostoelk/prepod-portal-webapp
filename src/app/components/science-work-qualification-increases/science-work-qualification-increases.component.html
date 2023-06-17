@@ -1,1 +1,26 @@
-<p>science-work-qualification-increases works!</p>
+<div class="scienceTab_header">
+  <a href="javascript:void(0)" *ngIf="isAuthenticated && isMe || isAdmin">Додати запис про підвищ. кваліф.</a>
+  <div style="position:relative;display:inline-block;{{ filterLinkMargin }}">
+    <a href="javascript:void(0)">Фільтр</a>
+  </div>
+</div>
+<div class="scienceTab_body_wrap">
+  <div id="ajax_loader_publications" class="ajax_loader" *ngIf="(qualificationIncreases$ | async) === null; else qualsList"></div>
+  <ng-template #qualsList>
+    <div id="increaseQualInfo_body">
+      <div class="scienceBlock" *ngFor="let qualIncrease of qualificationIncreases$ | async">
+        <div class="remove_scienceBlock" *ngIf="isAdmin || isMyQualIncrease(qualIncrease)"></div>
+        <div class="scienceBlock_title">{{ qualIncrease.type }}</div>
+        <div class="scienceBlock_mainInf">
+          <div><span>Номер наказу: </span>{{ qualIncrease?.orderNumber }}</div>
+          <div *ngIf="qualIncrease.type === 'Стажування за кордоном' || qualIncrease.type === 'Стажування у ВНЗ України'">
+            <span>Тема стажування: </span> {{ qualIncrease?.internshipTheme }}
+          </div>
+          <div><span>Організація: </span>{{ qualIncrease?.organization }}</div>
+          <div *ngIf="qualIncrease?.startDate !== null"><span>Дата початку стажування: </span>{{ (qualIncrease?.startDate | date: 'longDate':'':'uk-UA') ?? 'Інформація відсутня' }}</div>
+          <div *ngIf="qualIncrease?.endDate !== null"><span>Дата завершення стажування: </span>{{ (qualIncrease?.endDate | date: 'longDate':'':'uk-UA') ?? 'Інформація відсутня' }}</div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
