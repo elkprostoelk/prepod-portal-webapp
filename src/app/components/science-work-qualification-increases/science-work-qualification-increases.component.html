@@ -9,7 +9,7 @@
   <ng-template #qualsList>
     <div id="increaseQualInfo_body">
       <div class="scienceBlock" *ngFor="let qualIncrease of qualificationIncreases$ | async">
-        <div class="remove_scienceBlock" *ngIf="isAdmin || isMyQualIncrease(qualIncrease)"></div>
+        <div class="remove_scienceBlock" *ngIf="isAdmin || isMyQualIncrease(qualIncrease)" (click)="removeQualIncrease(qualIncrease.id)"></div>
         <div class="scienceBlock_title">{{ qualIncrease.type }}</div>
         <div class="scienceBlock_mainInf">
           <div><span>Номер наказу: </span>{{ qualIncrease?.orderNumber }}</div>

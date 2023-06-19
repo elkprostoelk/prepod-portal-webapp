@@ -44,4 +44,12 @@ export class ScienceWorkQualificationIncreasesComponent implements OnInit {
   get filterLinkMargin(): string {
     return this.isAdmin || this.isAuthenticated && this.isMe ? 'margin-left:5rem' : '';
   }
+
+  removeQualIncrease(id: number) {
+    this.qualificationService.removeQualIncrease(id)
+      .subscribe({
+        next: () => this.ngOnInit(),
+        error: err => console.log(err)
+      });
+  }
 }

@@ -15,4 +15,8 @@ export class QualificationIncreaseService {
   getUserQualificationIncreases(userId: string): Observable<QualificationIncreaseDto[]> {
     return this.http.get<QualificationIncreaseDto[]>(`${environment.apiPath}${this.qualPath}all/${userId}`);
   }
+
+  removeQualIncrease(id: number): Observable<any> {
+    return this.http.delete<any>(`${environment.apiPath}${this.qualPath}${id}`);
+  }
 }

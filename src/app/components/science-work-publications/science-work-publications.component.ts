@@ -60,18 +60,17 @@ export class ScienceWorkPublicationsComponent implements OnInit {
   removePublication(id: number): void {
     this.publicationService.deletePublication(id)
       .subscribe({
-        error: (err: HttpErrorResponse) => {
-          console.log(err);
-        }
+        next: () => this.ngOnInit(),
+        error: (err: HttpErrorResponse) =>
+          console.log(err)
       });
   }
 
   ngOnInit(): void {
     this.publicationService.getPublications(this.userId)
       .subscribe({
-        next: publications => {
-          this.publications$.next(publications);
-        }
+        next: publications =>
+          this.publications$.next(publications)
       });
   }
 }
